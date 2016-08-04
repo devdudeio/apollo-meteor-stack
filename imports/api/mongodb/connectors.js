@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import _ from 'lodash';
 import casual from 'casual';
+import Mongoose from 'mongoose'
+
 
 const db = new Sequelize('blog', null, null, {
     dialect: 'sqlite',
@@ -14,28 +16,39 @@ const AuthorModel = db.define('author', {
 
 
 const PostModel = db.define('post', {
-   title: {type: Sequelize.STRING},
+    title: {type: Sequelize.STRING},
     text: {type: Sequelize.STRING}
 });
 
 AuthorModel.hasMany(PostModel);
 PostModel.belongsTo(AuthorModel);
 
+//views in mongoDB
+
+const mongo = Mongoose.connect('mongodb://localhost:3001/meteor');
+
+const ViewSchema = Mongoose.Schema({
+    postId: Number,
+    views: Number
+});
+
+const View = Mongoose.model('meteor', ViewSchema);
+
 casual.seed(123);
-db.sync({force: true}).then(()=>{
-    _.times(10, ()=>{
-        console.log("#############################################");
-        console.log(casual.first_name + " - " + casual.last_name);
-        console.log("#############################################");
-
-
+db.sync({force: true}).then(()=> {
+    _.times(10, ()=> {
         return AuthorModel.create({
             firstName: casual.first_name,
             lastName: casual.last_name
-        }).then((author)=>{
+        }).then((author)=> {
             return author.createPost({
-                title:`A Post by ${author.firstName}`,
-                text: casual.sentences(3)
+                title: `A fancy post by ${author.firstName}`,
+                text: casual.sentences(2)
+            }).then((post) => {
+                return View.update(
+                    {postId: post.id},
+                    {views: casual.integer(0, 100)},
+                    {upsert: true});
             });
         });
     });
@@ -44,4 +57,4 @@ db.sync({force: true}).then(()=>{
 const Author = db.models.author;
 const Post = db.models.post;
 
-export {Author, Post};
+export {Author, Post, View};

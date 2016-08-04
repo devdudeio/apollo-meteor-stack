@@ -9,10 +9,10 @@ createApolloServer({
     graphiql: true,
     pretty: true,
     schema: schema,
-    resolvers: resolvers,
-    allowUndefinedInResolvers: false,
-    printErrors: true
-    //mocks: mocks
+    resolvers: resolvers
+    // allowUndefinedInResolvers: false,
+    // printErrors: true
+    // mocks: mocks
 });
 
 
