@@ -4,11 +4,23 @@ Tutorial: How to build a GraphQL server
 <a href="https://medium.com/apollo-stack/tutorial-building-a-graphql-server-cddaa023c035#.2lyrh8yfk">Medium Blogpost</a>
 
 I just followed the blogpost to integrate everything into a meteor stack.
-Also added some other features from [fortunecookieapi.com](fortunecookieapi.com) like
+
+Also added some other features
+
+[fortunecookieapi.com](fortunecookieapi.com)
 
 - random lotto numbers
 - random english/chinese lessons
 
+[https://developer.forecast.io/docs/v2](https://developer.forecast.io/docs/v2)
+
+- added weather api (seems to be slow)
+
+[http://nominatim.openstreetmap.org/reverse](http://nominatim.openstreetmap.org/reverse)
+
+- fetch name of city/village from given latitude/longitude 
+
+see `schema.js` for more information
 
 tested with METEOR@1.4.0.1
 
