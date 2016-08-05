@@ -23,7 +23,6 @@ open your browser and take a look at
 ####example graphql query
 
 ```javascript
-{
   author(firstName: "Marlen") {
     id
     firstName
@@ -42,7 +41,16 @@ open your browser and take a look at
     chinese
     pronunciation
   }
-}
+  weather(latitude: 41.05041, longitude: 13.73726) {
+    timezone
+    locationname
+    current {
+      time
+      summary
+      temperature
+      ozone
+    }
+  }
 ```
 
 make sure you replace "Marlen" with a name from your generated db (see logs on server startup). 
