@@ -1,4 +1,12 @@
 const typeDefinition = [`
+type Lesson{
+    english: String
+    chinese: String
+    pronunciation: String
+}
+
+
+
 type Author{
     id: Int
     firstName: String
@@ -14,8 +22,11 @@ type Post {
     author: Author
 }
 
- type Query {
+type Query {
     author(firstName: String, lastName: String): Author
+    fortuneCookie: String
+    lottoNumbers: String
+    lesson: Lesson
   }
 
   schema {

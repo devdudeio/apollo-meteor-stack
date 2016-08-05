@@ -1,9 +1,18 @@
-import {Author, Post, View} from './connectors';
+import {Author, View, FortuneCookie, LottoNumbers, Lesson} from './connectors';
 
 const resolvers = {
     Query: {
         author(_, args){
             return Author.find({where: args});
+        },
+        fortuneCookie(){
+            return FortuneCookie.getOne();
+        },
+        lottoNumbers(){
+            return LottoNumbers.getSome();
+        },
+        lesson(){
+            return Lesson.getOne();
         }
     },
     Author: {
@@ -20,6 +29,7 @@ const resolvers = {
             return View.findOne({postId: post.id}).then((view)=> view.views);
         }
     }
+
 };
 
 export default resolvers;

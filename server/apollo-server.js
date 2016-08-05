@@ -12,7 +12,6 @@ createApolloServer({
     resolvers: resolvers
     // allowUndefinedInResolvers: false,
     // printErrors: true
-    // mocks: mocks
 });
 
 
