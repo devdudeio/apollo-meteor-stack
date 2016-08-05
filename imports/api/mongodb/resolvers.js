@@ -1,4 +1,4 @@
-import {Author, View, FortuneCookie, LottoNumbers, Lesson} from './connectors';
+import {Author, View, FortuneCookie, LottoNumbers, Lesson, Weather} from './connectors';
 
 const resolvers = {
     Query: {
@@ -13,6 +13,10 @@ const resolvers = {
         },
         lesson(){
             return Lesson.getOne();
+        },
+        weather(_, args){
+            console.log(args);
+            return Weather.getOne(args.latitude, args.longitude);
         }
     },
     Author: {
@@ -27,6 +31,14 @@ const resolvers = {
         },
         views(post){
             return View.findOne({postId: post.id}).then((view)=> view.views);
+        }
+    },
+    Weather: {
+        current(weather){
+            return Weather.getCurrent(weather);
+        },
+        locationname(weather){
+            return Weather.getLocationName(weather);
         }
     }
 

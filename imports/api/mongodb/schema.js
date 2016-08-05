@@ -27,7 +27,37 @@ type Query {
     fortuneCookie: String
     lottoNumbers: String
     lesson: Lesson
+    weather(latitude: Float, longitude: Float): Weather
   }
+
+type Weather {
+    latitude: Float
+    longitude: Float
+    locationname: String
+    timezone: String
+    offset: Int
+    current: CurrentWeather
+}
+
+type CurrentWeather{
+    time: Int
+    summary: String
+    icon: String
+    precipIntensity: Float
+    precipProbability: Float
+    precipType: String
+    temperature: Float
+    apparentTemperature: Float
+    dewPoint: Float
+    humidity: Float
+    windSpeed: Float
+    windBearing: Int
+    visibility: Float
+    cloudCover: Float
+    pressure: Float
+    ozone: Float
+}
+
 
   schema {
     query: Query
