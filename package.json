@@ -2,7 +2,9 @@
   "name": "hello",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "apollo-client": "^0.4.10",
@@ -26,6 +28,8 @@
     "request-promise": "^4.1.0",
     "sequelize": "^3.23.6",
     "sqlite": "^2.2.0",
-    "sqlite3": "^3.1.4"
-  }
+    "sqlite3": "^3.1.4",
+    "snyk": "^1.41.1"
+  },
+  "snyk": true
 }
