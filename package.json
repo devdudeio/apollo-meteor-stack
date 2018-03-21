@@ -26,6 +26,6 @@
     "request-promise": "^4.1.0",
     "sequelize": "^3.23.6",
     "sqlite": "^2.2.0",
-    "sqlite3": "^3.1.4"
+    "sqlite3": "^4.0.0"
   }
 }
