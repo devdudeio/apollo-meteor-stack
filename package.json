@@ -10,7 +10,7 @@
     "casual": "^1.5.3",
     "dataloader": "^1.2.0",
     "dotenv": "^2.0.0",
-    "eslint": "^3.2.2",
+    "eslint": "^4.18.2",
     "eslint-plugin-graphql": "^0.2.4",
     "express": "^4.14.0",
     "graphql": "^0.6.2",
